@@ -1,5 +1,5 @@
 ---
-title: "131_hw2_myanswers"
+title: "PSTAT 131 HW 2"
 author: "Eric"
 date: "4/5/2022"
 output:
