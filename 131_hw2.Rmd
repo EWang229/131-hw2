@@ -42,7 +42,7 @@ abalone_recipe <- recipe(age ~ ., data = subset(abalone_train, select = -rings))
   step_interact(terms = ~ shucked_weight:shell_weight) %>%
   step_normalize(all_predictors())
 ```
-We should not use rings to predict age because both are highly correlated with each other, since We created the age column using the rings variable. Our model may pick up on the pattern and give very good accuracy (maybe even an R^2 of 1).
+We should not use rings to predict age because both are highly correlated with each other, since we created the age column using the rings variable. Our model may pick up on the pattern and give very good accuracy (maybe even an R^2 of 1).
 
 # Question 4
 ```{r}
@@ -70,7 +70,7 @@ The predicted age of an abalone with the given attributes is 23.488.
 # Question 7
 ```{r}
 abalone_train_metrics <- metric_set(rsq, rmse, mae)
-abalone_train_res <- predict(abalone_fit, new_data = abalone_train %>% select(-rings))
+abalone_train_res <- predict(abalone_fit, new_data = abalone_train %>% select(-age))
 abalone_train_res <- bind_cols(abalone_train_res, abalone_train %>% select(age))
 abalone_train_metrics(abalone_train_res, truth = age, estimate = .pred)
 ```
